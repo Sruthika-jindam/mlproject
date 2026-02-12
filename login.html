@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SecureLoan - Authentication</title>
+
+<style>
+/* ===== Global Styling ===== */
+body {
+    margin: 0;
+    font-family: "Inter", "Segoe UI", sans-serif;
+    background: #f4f7fb;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+}
+
+/* ===== Main Container ===== */
+.auth-container {
+    display: flex;
+    width: 900px;
+    height: 520px;
+    background: white;
+    border-radius: 18px;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.08);
+    overflow: hidden;
+}
+
+/* ===== Left Branding Panel ===== */
+.brand-panel {
+    width: 45%;
+    background: linear-gradient(135deg, #2563eb, #1e40af);
+    color: white;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.brand-panel h1 {
+    font-size: 32px;
+    margin-bottom: 10px;
+}
+
+.brand-panel p {
+    opacity: 0.9;
+    line-height: 1.6;
+}
+
+/* ===== Right Form Panel ===== */
+.form-panel {
+    width: 55%;
+    padding: 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.tabs {
+    display: flex;
+    margin-bottom: 25px;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    cursor: pointer;
+    font-weight: 600;
+    border-bottom: 2px solid transparent;
+    color: #6b7280;
+}
+
+.tab.active {
+    color: #2563eb;
+    border-color: #2563eb;
+}
+
+/* ===== Form Styling ===== */
+form {
+    display: none;
+    flex-direction: column;
+}
+
+form.active {
+    display: flex;
+}
+
+label {
+    font-size: 14px;
+    margin-bottom: 6px;
+    color: #374151;
+}
+
+input {
+    padding: 12px;
+    margin-bottom: 18px;
+    border-radius: 8px;
+    border: 1px solid #d1d5db;
+    font-size: 14px;
+}
+
+input:focus {
+    outline: none;
+    border-color: #2563eb;
+    box-shadow: 0 0 0 2px rgba(37,99,235,0.1);
+}
+
+/* ===== Button ===== */
+button {
+    background: #2563eb;
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 10px;
+    font-size: 15px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+button:hover {
+    background: #1e40af;
+}
+
+/* ===== Footer Text ===== */
+.helper {
+    margin-top: 12px;
+    font-size: 13px;
+    color: #6b7280;
+}
+
+/* ===== Responsive ===== */
+@media(max-width: 768px) {
+    .auth-container {
+        flex-direction: column;
+        width: 95%;
+        height: auto;
+    }
+    .brand-panel {
+        width: 100%;
+        text-align: center;
+    }
+    .form-panel {
+        width: 100%;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="auth-container">
+
+    <!-- Left Branding -->
+    <div class="brand-panel">
+        <h1>SecureLoan</h1>
+        <p>
+            AI-Powered Credit Risk Analytics Platform.<br><br>
+            Predict loan default, assess borrower reliability,
+            and make data-driven lending decisions with confidence.
+        </p>
+    </div>
+
+    <!-- Right Forms -->
+    <div class="form-panel">
+
+        <div class="tabs">
+            <div class="tab active" onclick="switchTab('login')">Sign In</div>
+            <div class="tab" onclick="switchTab('signup')">Sign Up</div>
+        </div>
+
+        <!-- Login Form -->
+        <form id="loginForm" class="active">
+            <label>Email Address</label>
+            <input type="email" placeholder="Enter your email" required>
+
+            <label>Password</label>
+            <input type="password" placeholder="Enter your password" required>
+
+            <button type="submit">Login to Dashboard</button>
+            <div class="helper">Access your risk assessment tools</div>
+        </form>
+
+        <!-- Signup Form -->
+        <form id="signupForm">
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your name" required>
+
+            <label>Email Address</label>
+            <input type="email" placeholder="Enter your email" required>
+
+            <label>Password</label>
+            <input type="password" placeholder="Create password" required>
+
+            <button type="submit">Create Account</button>
+            <div class="helper">Start using SecureLoan AI</div>
+        </form>
+
+    </div>
+
+</div>
+
+<script>
+function switchTab(tab) {
+    document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+    document.querySelectorAll('form').forEach(f => f.classList.remove('active'));
+
+    if (tab === 'login') {
+        document.querySelectorAll('.tab')[0].classList.add('active');
+        document.getElementById('loginForm').classList.add('active');
+    } else {
+        document.querySelectorAll('.tab')[1].classList.add('active');
+        document.getElementById('signupForm').classList.add('active');
+    }
+}
+</script>
+
+</body>
+</html>
+

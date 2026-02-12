@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <title>SecureLoan - Risk Assessment</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<div class="container">
+
+```
+<!-- Sidebar -->
+<div class="sidebar">
+    <h2>🔒 SecureLoan</h2>
+    <p class="sub">AI Risk Analytics</p>
+
+    <a class="menu active">Risk Assessment</a>
+    <a href="/history" class="menu">History</a>
+    <a href="/logout" class="menu" style="color: #ff6b6b; margin-top: auto;">Logout</a>
+</div>
+
+<!-- Main Content -->
+<div class="main">
+    <h1>Risk Assessment Tool</h1>
+    <p class="desc">Input customer parameters to generate a real-time credit default prediction.</p>
+
+    <form method="POST" class="card">
+
+        <h3>Applicant Details</h3>
+
+        <div class="row">
+            <div>
+                <label>Annual Income ($)</label>
+                <input name="income" type="number" required>
+            </div>
+
+            <div>
+                <label>Requested Loan Amount ($)</label>
+                <input name="loan" type="number" required>
+            </div>
+        </div>
+
+        <label>Credit Score: <span id="creditVal">700</span></label>
+        <input type="range" name="credit" min="300" max="850" value="700"
+               oninput="creditVal.innerText=this.value">
+
+        <label>Debt-to-Income Ratio (%): <span id="dtiVal">15</span></label>
+        <input type="range" name="dti" min="1" max="50" value="15"
+               oninput="dtiVal.innerText=this.value">
+
+        <div class="row">
+            <div>
+                <label>Employment (Years)</label>
+                <input name="years" type="number" required>
+            </div>
+
+            <div>
+                <label>Loan Term</label>
+                <select>
+                    <option>36 Months</option>
+                    <option>60 Months</option>
+                </select>
+            </div>
+        </div>
+
+        <button class="btn">Generate Risk Assessment →</button>
+    </form>
+
+    {% if prediction %}
+    <div class="result">
+        <h2>Prediction Result: {{ prediction }}</h2>
+    </div>
+    {% endif %}
+</div>
+```
+
+</div>
+
+</body>
+</html>

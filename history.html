@@ -1,0 +1,19 @@
+<h2>Assessment History</h2>
+<table border="1">
+<tr>
+<th>Income</th><th>Loan</th><th>Credit</th><th>DTI</th><th>Years</th><th>Result</th>
+</tr>
+{% for row in data %}
+<tr>
+<td>{{row[1]}}</td>
+<td>{{row[2]}}</td>
+<td>{{row[3]}}</td>
+<td>{{row[4]}}</td>
+<td>{{row[5]}}</td>
+<td>{{row[6]}}</td>
+</tr>
+{% endfor %}
+</table>
+
+
+<a href="/dashboard">Back</a>
